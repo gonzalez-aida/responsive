@@ -34,16 +34,16 @@ const App = () => {
         <div className="product-grid">
           {products.map((product, index) => (
             <div key={index} className="product-card">
+              <div className="card-header">
+                <h3 className="product-title">{product.name}</h3>
+              </div>
               <div className="image-container">
                 <img
-                  src={product.image}
                   alt={product.name}
+                  src={product.image}
                   className="responsive-image"
                   loading="lazy"
                 />
-              </div>
-              <div className="card-header">
-                <h3 className="product-title">{product.name}</h3>
               </div>
               <div className="card-content">
                 <p className="product-description">{product.description}</p>
