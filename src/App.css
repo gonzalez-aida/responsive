@@ -1,0 +1,458 @@
+/* 1. REJILLAS FLEXIBLES - Optimizado para diferentes resoluciones de smartphone */
+.product-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  /* Base para móviles pequeños y HD (720p) */
+  grid-template-columns: 1fr;
+}
+
+/* HD: 720x1280 (relación 16:9) */
+@media screen and (min-width: 720px) and (max-width: 1079px) and (orientation: portrait),
+screen and (min-width: 1280px) and (max-width: 1919px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Full HD: 1080x1920 (relación 16:9) */
+@media screen and (min-width: 1080px) and (max-width: 1439px) and (orientation: portrait),
+screen and (min-width: 1920px) and (max-width: 2159px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Full HD+: 1080x2340 (relación ~19.5:9) - Teléfonos modernos alargados */
+@media screen and (min-width: 1080px) and (min-height: 2200px) and (orientation: portrait) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .product-grid .product-card {
+    min-height: 330px;
+  }
+}
+
+/* Quad HD+: 1440x3200 (relación ~20:9) */
+@media screen and (min-width: 1440px) and (orientation: portrait) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .product-grid .product-card {
+    min-height: 360px;
+  }
+}
+
+/* Ultra HD (4K): 2160x3840 (relación 16:9) */
+@media screen and (min-width: 2160px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+/* Ajustes para orientación landscape en dispositivos móviles */
+@media screen and (orientation: landscape) and (max-height: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========== NUEVAS ADICIONES PARA LAPTOPS Y MONITORES ========== */
+
+/* Laptops HD (1366x768) */
+@media screen and (min-width: 1366px) and (max-width: 1919px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Laptops QHD (2560x1440) */
+@media screen and (min-width: 2560px) and (max-width: 2879px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Tablets (768x1024, 4:3) */
+@media screen and (min-width: 768px) and (max-width: 809px) and (orientation: portrait),
+screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablets modernas (810x1080, 4:3) */
+@media screen and (min-width: 810px) and (max-width: 833px) and (orientation: portrait),
+screen and (min-width: 1080px) and (max-width: 1193px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Tablets grandes (2048x1536, 4:3) */
+@media screen and (min-width: 2048px) and (orientation: portrait),
+screen and (min-width: 1536px) and (max-width: 1919px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+/* Monitores HD Ready (1280x720) */
+@media screen and (min-width: 1280px) and (max-width: 1365px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Monitores QHD (2560x1440) */
+@media screen and (min-width: 2560px) and (max-width: 3839px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Monitores 5K (5120x2880) */
+@media screen and (min-width: 5120px) {
+  .product-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Monitores UltraWide (2560x1080) */
+@media screen and (min-width: 2560px) and (max-width: 3439px) and (max-height: 1080px) {
+  .product-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Monitores UltraWide QHD (3440x1440) */
+@media screen and (min-width: 3440px) and (max-width: 5119px) and (max-height: 1440px) {
+  .product-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Monitores UltraWide 5K (5120x2160) */
+@media screen and (min-width: 5120px) and (max-height: 2160px) {
+  .product-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 28px;
+  }
+}
+
+/* ========== FIN DE NUEVAS ADICIONES ========== */
+
+.product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* MODIFICACIÓN: Se añade aspect-ratio para mantener proporción en cards */
+  aspect-ratio: 3/4; /* Relación ideal para cards de producto */
+}
+
+/* MODIFICACIÓN: Ajuste de aspect-ratio para landscape */
+@media screen and (orientation: landscape) {
+  .product-card {
+    aspect-ratio: 4/3;
+  }
+}
+
+.product-card ion-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 2. IMÁGENES FLEXIBLES - Adaptadas a diferentes relaciones de aspecto */
+.image-container {
+  overflow: hidden;
+  width: 100%;
+
+  /* Relación 16:9 para resoluciones estándar */
+  aspect-ratio: 16/9;
+  /* MODIFICACIÓN: Se añade posición relativa para mejor soporte */
+  position: relative;
+}
+
+/* Ajustes para relaciones más altas (19.5:9, 20:9) */
+@media screen and (min-width: 1080px) and (min-height: 2200px) and (orientation: portrait) {
+  .image-container {
+    aspect-ratio: 19.5/9;
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-height: 3000px) and (orientation: portrait) {
+  .image-container {
+    aspect-ratio: 20/9;
+  }
+}
+
+/* ========== NUEVAS ADICIONES PARA IMÁGENES ========== */
+
+/* Tablets 4:3 */
+@media screen and (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .image-container {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Monitores UltraWide 21:9 */
+@media screen and (min-aspect-ratio: 21/9) {
+  .image-container {
+    aspect-ratio: 21/9;
+  }
+}
+
+/* ========== FIN DE NUEVAS ADICIONES ========== */
+
+.responsive-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  /* MODIFICACIÓN: Se añade posición absoluta para mejor soporte */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.responsive-image:hover {
+  transform: scale(1.05);
+}
+
+/* 4. CONTENIDO LEGIBLE - Optimizado para diferentes densidades de pantalla */
+.product-title {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+/* Ajustes para Full HD y superiores */
+@media screen and (min-width: 1080px) {
+  .product-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Ajustes para Quad HD+ y 4K */
+@media screen and (min-width: 1440px) {
+  .product-title {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+/* ========== NUEVAS ADICIONES PARA TIPOGRAFÍA ========== */
+
+/* Laptops y monitores */
+@media screen and (min-width: 1366px) and (orientation: landscape) {
+  .product-title {
+    font-size: 1.3rem;
+  }
+  .product-description {
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) and (orientation: portrait) {
+  .product-title {
+    font-size: 1.25rem;
+  }
+  .product-description {
+    font-size: 1rem;
+  }
+}
+
+/* Monitores 4K y superiores */
+@media screen and (min-width: 3840px) {
+  .product-title {
+    font-size: 1.8rem;
+  }
+  .product-description {
+    font-size: 1.4rem;
+  }
+  .info-section .info-text h3 {
+    font-size: 2rem;
+  }
+  .info-section .info-text p {
+    font-size: 1.3rem;
+  }
+}
+
+/* ========== FIN DE NUEVAS ADICIONES ========== */
+
+.product-description {
+  color: var(--ion-color-medium);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Ajustes para Full HD y superiores */
+@media screen and (min-width: 1080px) {
+  .product-description {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes para Quad HD+ y 4K */
+@media screen and (min-width: 1440px) {
+  .product-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Sección de información */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* Ajustes para orientación landscape o pantallas más grandes */
+@media screen and (min-width: 720px) and (orientation: landscape),
+screen and (min-width: 1080px) and (orientation: portrait) {
+  .info-section {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ========== NUEVAS ADICIONES PARA INFO SECTION ========== */
+
+/* Ajustes para sección de información en tablets */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .info-section {
+    flex-direction: column;
+  }
+}
+
+/* Monitores UltraWide */
+@media screen and (min-aspect-ratio: 21/9) {
+  .info-section {
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ========== FIN DE NUEVAS ADICIONES ========== */
+
+.info-section .info-text {
+  flex: 1;
+}
+
+.info-section .info-text h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 1080px) {
+  .info-section .info-text h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .info-section .info-text h3 {
+    font-size: 1.8rem;
+  }
+}
+
+.info-section .info-text p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 65ch; /* Contenido legible - limitar longitud de línea */
+}
+
+@media screen and (min-width: 1080px) {
+  .info-section .info-text p {
+    font-size: 1.05rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .info-section .info-text p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+}
+
+.info-section .info-image {
+  flex: 1;
+  min-height: 200px;
+  /* implementación de aspect-ratio para imágenes informativas */
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1080px) {
+  .info-section .info-image {
+    min-height: 250px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .info-section .info-image {
+    min-height: 300px;
+  }
+}
+
+/* Ajustes para dispositivos de alta densidad de píxeles (hdpi) */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi) {
+  .product-title, .info-section h3 {
+    font-weight: 500; /* Ligeramente más fino para compensar la densidad */
+  }
+}
+
+/* Ajustes adicionales para diferentes modos */
+@media (prefers-color-scheme: dark) {
+  .product-description {
+    color: var(--ion-color-light-shade);
+  }
+}
+
+/* Ajustes de accesibilidad para texto */
+@media (prefers-reduced-motion: reduce) {
+  .responsive-image {
+    transition: none;
+  }
+}
+
+/* Indicador de resolución - para pruebas */
+.resolution-indicator {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1000;
+}
+
+/* MODIFICACIÓN: Clases utilitarias añadidas para aspect ratio */
+.ratio-1x1 { aspect-ratio: 1/1; }
+.ratio-4x3 { aspect-ratio: 4/3; }
+.ratio-16x9 { aspect-ratio: 16/9; }
+.ratio-21x9 { aspect-ratio: 21/9; }
